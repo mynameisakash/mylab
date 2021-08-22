@@ -1,5 +1,7 @@
 #Questions Related to user activity
 
+Question1: Create user "amit"? Reset the password of the user "amit" to "p@sswd@123"?
+
 Question2: Create a group called john with the GID 1010.
 Next create another user called john with UID = 1010, primary group = john and login shell = /bin/sh?
 
