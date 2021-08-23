@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: prod
+  labels:
+    env: prod
+    status: critical
+  annotations:
+    imageregistry: "https://console.aws.amazon.com/systems-manager/session-manager/i-006703aa70009f459?region=us-east-1"
