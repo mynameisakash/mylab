@@ -1,3 +1,4 @@
+#Define an environment variable for a container 
 apiVersion: v1
 kind: Pod
 metadata:
