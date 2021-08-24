@@ -1,4 +1,8 @@
 #Define an environment variable for a container 
+#List the running Pods:
+#kubectl get pods -l purpose=demonstrate-envars
+#List the Pod's container environment variables:
+#kubectl exec envar-demo -- printenv
 apiVersion: v1
 kind: Pod
 metadata:
