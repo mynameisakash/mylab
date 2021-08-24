@@ -1,3 +1,4 @@
+#Expose Pod Information to Containers Through Environment Variables
 #Use Pod fields as values for environment variables
 apiVersion: v1
 kind: Pod
