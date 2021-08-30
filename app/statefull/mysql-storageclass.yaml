@@ -1,0 +1,9 @@
+cat <<EOF > mysql-storageclass.yaml
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: general
+provisioner: kubernetes.io/aws-ebs
+parameters:
+  type: gp2
+EOF
