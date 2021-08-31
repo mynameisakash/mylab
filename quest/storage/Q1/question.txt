@@ -1,0 +1,23 @@
+
+Create a PersistentVolume
+
+Create a PersistentVolume called host-storage-pv. Configure this PersistentVolume so that volumes that use it can be expanded in the future.
+Note: This may require you to create additional objects.
+
+Configure the PersistentVolume to use a hostPath for storage, located at /etc/data.
+
+Configure the PersistentVolumes so that it can be automatically reused if all claims are deleted.
+
+Create a Pod That Uses the `PersistentVolume` for Storage
+
+Create a pod called pv-pod in the auth Namespace. Configure this Pod so that it uses the host-storage-pv PersistentVolume for storage.
+
+Note: This will require the creation of a PersistentVolumeClaim.
+
+Name the PersistentVolumeClaim host-storage-pvc. Give your PersistentVolumeClaim a size of 100Mi.
+
+Use the busybox image for this pod, and configure it to run the command sh -c while true; do echo success > /output/output.log; sleep 5; done.
+Mount the volume that uses the PersistentVolume for storage, such that the /output directory ultimately writes to the PersistentVolume.
+
+Expand the `PersistentVolumeClaim`
+Expand the PersistentVolumeClaim so that the requested storage size is 200Mi.
