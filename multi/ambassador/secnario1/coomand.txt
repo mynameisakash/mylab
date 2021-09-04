@@ -1,0 +1,7 @@
+kubectl apply -f fruit-service-ambassador-config.yml
+
+kubectl apply -f fruit-service.yml
+
+kubectl apply -f busybox.yml
+
+kubectl exec busybox -- curl $(kubectl get pod fruit-service -o=custom-columns=IP:.status.podIP --no-headers):80
