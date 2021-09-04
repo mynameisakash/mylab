@@ -1,0 +1,62 @@
+----------
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: db-password
+stringData:
+  db-password: Kub3rn3t3sRul3s!
+  
+-------------------
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: candy-service-config
+data:
+  candy.cfg: |
+    candy.peppermint.power=100000000
+    candy.nougat-armor.strength=10
+-----------------------
+apiVersion: v1
+kind: Pod
+metadata:
+  name: candy-service
+spec:
+  serviceAccountName: candy-svc
+  securityContext:
+    fsGroup: 2000
+  containers:
+  - name: sec-ctx-demio
+    image: linuxacademycontent/candy-service:1
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    env:
+      - name: DB_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: db-password
+            key: db-password
+    volumeMounts:
+    - name: config
+      mountPath: /etc/candy-service/candy.cfg
+      readOnly: true
+  volumes:
+    # You set volumes at the Pod level, then mount them into containers inside that Pod
+    - name: config
+      configMap:
+        # Provide the name of the ConfigMap you want to mount.
+        name: candy-service-config
+        # An array of keys from the ConfigMap to create as files
+        items:
+        - key: "candy.cfg"
+          path: "candy.cfg"
+                                                                                                     
+    
+    
+ 
